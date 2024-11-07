@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix Premium Plans | CartelUG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #f5f5f5;
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #111;
+    }
+    .intro-text {
+      font-size: 18px;
+      font-weight: 300;
+      color: #555;
+      margin-bottom: 40px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .plan {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .plan:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+    }
+    .plan-title {
+      font-size: 24px;
+      font-weight: 500;
+      color: #111;
+      margin-bottom: 15px;
+    }
+    .plan-price {
+      font-size: 28px;
+      color: #d81f26;
+      font-weight: 700;
+      margin: 10px 0;
+    }
+    .plan-details {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+    .pay-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+      background: #d81f26;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .pay-btn:hover { background: #b3171f; }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.4s;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 30px;
+      width: 90%;
+      max-width: 450px;
+      border-radius: 10px;
+      text-align: center;
+      animation: slideIn 0.4s;
+      position: relative;
+    }
+    .modal h2 {
+      color: #d81f26;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .modal p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .confirm-btn {
+      background: #d81f26;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .confirm-btn:hover { background: #a3141b; }
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideIn {
+      from { transform: translateY(-20px); }
+      to { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Choose Your Netflix Plan</h1>
+    <p class="intro-text">Flexible plans to suit every entertainment need. Pay securely and enjoy seamless streaming.</p>
+    
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-title">1 Month Plan</div>
+        <div class="plan-price">UGX 25,000</div>
+        <div class="plan-details">HD streaming on 2 devices</div>
+        <a href="#" class="pay-btn" onclick="openModal('1 Month Plan', 'UGX 25,000')">Pay Now</a>
+      </div>
+      <div class="plan">
+        <div class="plan-title">2 Months Plan</div>
+        <div class="plan-price">UGX 40,000</div>
+        <div class="plan-details">2 months of uninterrupted streaming</div>
+        <a href="#" class="pay-btn" onclick="openModal('2 Months Plan', 'UGX 40,000')">Pay Now</a>
+      </div>
+      <div class="plan">
+        <div class="plan-title">3 Months Plan</div>
+        <div class="plan-price">UGX 60,000</div>
+        <div class="plan-details">Enjoy Netflix for 3 months with HD streaming</div>
+        <a href="#" class="pay-btn" onclick="openModal('3 Months Plan', 'UGX 60,000')">Pay Now</a>
+      </div>
+      <div class="plan">
+        <div class="plan-title">6 Months Plan</div>
+        <div class="plan-price">UGX 120,000</div>
+        <div class="plan-details">HD streaming on 2 devices for 6 months</div>
+        <a href="#" class="pay-btn" onclick="openModal('6 Months Plan', 'UGX 120,000')">Pay Now</a>
+      </div>
+      <div class="plan">
+        <div class="plan-title">12 Months Plan</div>
+        <div class="plan-price">UGX 240,000</div>
+        <div class="plan-details">Enjoy a full year of streaming</div>
+        <a href="#" class="pay-btn" onclick="openModal('12 Months Plan', 'UGX 240,000')">Pay Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Payment Instructions</h2>
+      <p>Plan: <span id="planName"></span></p>
+      <p>Price: <span id="planPrice"></span></p>
+      <p>Please pay via Mobile Money:</p>
+      <ul>
+        <li>MTN: <strong>0762193386</strong> (Line name: Alfred)</li>
+        <li>Airtel: <strong>0744688623</strong> (Line name: Alfred)</li>
+      </ul>
+      <p>After payment, confirm your payment with us on WhatsApp by clicking the button below.</p>
+      <button class="confirm-btn" onclick="confirmPayment()">Confirm Payment on WhatsApp</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal(planName, planPrice) {
+      document.getElementById("planName").textContent = planName;
+      document.getElementById("planPrice").textContent = planPrice;
+      document.getElementById("paymentModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("paymentModal").style.display = "none";
+    }
+    function confirmPayment() {
+      window.location.href = "https://wa.link/li7eru";
+    }
+  </script>
+</body>
+</html>
